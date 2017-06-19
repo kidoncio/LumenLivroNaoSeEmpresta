@@ -18,83 +18,29 @@ $app->get('/', function () use ($app) {
 /**
  * Routes for resource autor
  */
-$app->get('autor', 'AutorsController@all');
-$app->get('autor/{id}', 'AutorsController@get');
-$app->post('autor', 'AutorsController@add');
-$app->put('autor/{id}', 'AutorsController@put');
-$app->delete('autor/{id}', 'AutorsController@remove');
+$app->get('api/v1/autor', 'AutorsController@all');
+$app->get('api/v1/autor/{id}', 'AutorsController@get');
+$app->post('api/v1/autor', 'AutorsController@add');
+$app->put('api/v1/autor/{id}', 'AutorsController@put');
+$app->delete('api/v1/autor/{id}', 'AutorsController@remove');
 
 /**
  * Routes for resource livro
  */
-$app->get('livro', 'LivrosController@all');
-$app->get('livro/{id}', 'LivrosController@get');
-$app->post('livro', 'LivrosController@add');
-$app->put('livro/{id}', 'LivrosController@put');
-$app->delete('livro/{id}', 'LivrosController@remove');
+$app->get('api/v1/livro', 'LivrosController@all');
+$app->get('api/v1/livro/{id}', 'LivrosController@get');
+$app->post('api/v1/livro', 'LivrosController@add');
+$app->put('api/v1/livro/{id}', 'LivrosController@put');
+$app->delete('api/v1/livro/{id}', 'LivrosController@remove');
 
 /**
  * Routes for resource categoria
  */
-$app->get('categoria', 'CategoriasController@all');
-$app->get('categoria/{id}', 'CategoriasController@get');
-$app->post('categoria', 'CategoriasController@add');
-$app->put('categoria/{id}', 'CategoriasController@put');
-$app->delete('categoria/{id}', 'CategoriasController@remove');
-
-/**
- * Routes for resource autor
- */
-$app->get('autor', 'AutorsController@all');
-$app->get('autor/{id}', 'AutorsController@get');
-$app->post('autor', 'AutorsController@add');
-$app->put('autor/{id}', 'AutorsController@put');
-$app->delete('autor/{id}', 'AutorsController@remove');
-
-/**
- * Routes for resource autor
- */
-$app->get('autor', 'AutorsController@all');
-$app->get('autor/{id}', 'AutorsController@get');
-$app->post('autor', 'AutorsController@add');
-$app->put('autor/{id}', 'AutorsController@put');
-$app->delete('autor/{id}', 'AutorsController@remove');
-
-/**
- * Routes for resource autor
- */
-$app->get('autor', 'AutorsController@all');
-$app->get('autor/{id}', 'AutorsController@get');
-$app->post('autor', 'AutorsController@add');
-$app->put('autor/{id}', 'AutorsController@put');
-$app->delete('autor/{id}', 'AutorsController@remove');
-
-/**
- * Routes for resource autor
- */
-$app->get('autor', 'AutorsController@all');
-$app->get('autor/{id}', 'AutorsController@get');
-$app->post('autor', 'AutorsController@add');
-$app->put('autor/{id}', 'AutorsController@put');
-$app->delete('autor/{id}', 'AutorsController@remove');
-
-/**
- * Routes for resource livro
- */
-$app->get('livro', 'LivrosController@all');
-$app->get('livro/{id}', 'LivrosController@get');
-$app->post('livro', 'LivrosController@add');
-$app->put('livro/{id}', 'LivrosController@put');
-$app->delete('livro/{id}', 'LivrosController@remove');
-
-/**
- * Routes for resource livro
- */
-$app->get('livro', 'LivrosController@all');
-$app->get('livro/{id}', 'LivrosController@get');
-$app->post('livro', 'LivrosController@add');
-$app->put('livro/{id}', 'LivrosController@put');
-$app->delete('livro/{id}', 'LivrosController@remove');
+$app->get('api/v1/categoria', 'CategoriasController@all');
+$app->get('api/v1/categoria/{id}', 'CategoriasController@get');
+$app->post('api/v1/categoria', 'CategoriasController@add');
+$app->put('api/v1/categoria/{id}', 'CategoriasController@put');
+$app->delete('api/v1/categoria/{id}', 'CategoriasController@remove');
 
 /**
  * Routes for resource emprestado
@@ -104,12 +50,3 @@ $app->get('emprestado/{id}', 'EmprestadosController@get');
 $app->post('emprestado', 'EmprestadosController@add');
 $app->put('emprestado/{id}', 'EmprestadosController@put');
 $app->delete('emprestado/{id}', 'EmprestadosController@remove');
-
-/**
- * Routes for resource livro
- */
-$app->get('livro', 'LivrosController@all');
-$app->get('livro/{id}', 'LivrosController@get');
-$app->post('livro', 'LivrosController@add');
-$app->put('livro/{id}', 'LivrosController@put');
-$app->delete('livro/{id}', 'LivrosController@remove');
