@@ -10,10 +10,7 @@ class CreateAutorsTable extends Migration
     {
         Schema::create('autors', function(Blueprint $table) {
             $table->increments('id');
-            $table->integer('autor_id');
-            $table->string('nome')->50();
-            // Constraints declaration
-
+            $table->string('nome', 100);
         });
     }
 

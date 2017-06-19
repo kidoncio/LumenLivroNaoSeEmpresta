@@ -10,11 +10,8 @@ class CreateCategoriasTable extends Migration
     {
         Schema::create('categorias', function(Blueprint $table) {
             $table->increments('id');
-            $table->integer('categoria_id');
-            $table->string('nome')->100();
+            $table->string('nome', 100);
             $table->text('descricao');
-            // Constraints declaration
-
         });
     }
 
