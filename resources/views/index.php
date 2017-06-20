@@ -73,27 +73,17 @@
 
     <div class="row">
         <div class="col-md-12">
-            <!--ul class="breadcrumb">
-                <li>
-                    <a href="#">Home</a> <span class="divider">/</span>
-                </li>
-                <li>
-                    <a href="#">Library</a> <span class="divider">/</span>
-                </li>
-                <li class="active">
-                    Data
-                </li>
-            </ul-->
             <div class="page-header">
                 <h1>
                     Livro Não Se Empresta <small>Controle os seus livros</small>
                 </h1>
             </div>
             <div class="row">
-                <div class="col-md-3"> <!-- sidebar -->
-                    <!-- Menu panel-->
+                <div class="col-md-3">
+
                     <div class="panel-group" id="panel-636607">
                         <uib-accordion>
+
                             <!-- Livros -->
                             <uib-accordion-group heading="Livros">
                                 <a href="/livro" class="list-group-item">Buscar</a>
@@ -116,13 +106,12 @@
                             </uib-accordion-group>
 
                         </uib-accordion>
-                    </div><!-- fin menu panel -->
+                    </div>
 
-                </div> <!-- fin sidebar -->
-
-
-                <div class="col-md-9" ng-view>
                 </div>
+
+
+                <div class="col-md-9" ng-view></div>
 
             </div>
         </div>
@@ -135,7 +124,6 @@
         </p>
     </div>
 </div>
-<!-- //////////-->
 
 <script type="text/javascript" src="components/angular/angular.js"></script>
 <script type="text/javascript" src="components/angular-resource/angular-resource.js"></script>

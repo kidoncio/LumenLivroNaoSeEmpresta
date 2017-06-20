@@ -2,7 +2,7 @@ va = angular.module('livronaoseemprestaApp.controllers', []);
 
 va.controller('autorsCtrl', ['$scope', '$http', '$location', '$routeParams', '$resource',
 	function($scope, $http, $location, $routeParams, $resource){
-		
+
 		$scope.getAutors = function() {
 			$http.get('/api/v1/autor').success(function(response){
 				$scope.autors = response;
@@ -17,11 +17,13 @@ va.controller('autorsCtrl', ['$scope', '$http', '$location', '$routeParams', '$r
 				var autor = $resource('/api/v1/autor');
 				autor.save($scope.autor,
 				function(response){
+                    console.log(response);
 					alert("Autor registrado com sucesso!");
 					$location.path('/autor');
 					highlightSearch(); //Highlights the menu of /resource list
 				},
 				function(response){
+                    console.log(response);
 					alert("OPS. Verifique tods os campos e tente novamente.");
 					if(response.message != undefined){
 						alert(response.message);
@@ -36,7 +38,7 @@ va.controller('autorsCtrl', ['$scope', '$http', '$location', '$routeParams', '$r
 			autor.get({id: autor_id}, function(autor, getResponseHeaders){
 				$scope.autor = autor;
 			});
-		}
+		};
 
 		$scope.autorUpdate = function() {
 			if($scope.autor === undefined ){
@@ -83,7 +85,7 @@ va.controller('autorsCtrl', ['$scope', '$http', '$location', '$routeParams', '$r
 						}
 					});
 				}
-				
+
 			}
 		};
 
@@ -91,95 +93,190 @@ va.controller('autorsCtrl', ['$scope', '$http', '$location', '$routeParams', '$r
 ]);
 
 va.controller('categoriasCtrl', ['$scope', '$http', '$location', '$routeParams', '$resource',
-	function($scope, $http, $location, $routeParams, $resource){
+    function($scope, $http, $location, $routeParams, $resource){
 
-		$scope.getCategorias = function() {
-			$http.get('/api/v1/categoria').success(function(response){
-				$scope.categorias = response;
-			});
-		};
+        $scope.getCategorias = function() {
+            $http.get('/api/v1/categoria').success(function(response){
+                $scope.categorias = response;
+            });
+        };
 
-		$scope.categoriaSave = function() {
-			if($scope.categoria === undefined ){
-				alert("Deve-se preencher todos os campos.");
-			}
-			else {
-				var categoria = $resource('/api/v1/categoria');
-				categoria.save($scope.categoria,
-				function(response){
-					alert("Categoria registrada com sucesso.");
-					$location.path('/categoria');
-					highlightSearch(); //Highlights the menu of /resource list
-				},
-				function(response) {
-					alert("OPS. Verifique tods os campos e tente novamente.");
-					if(response.message != undefined){
-						alert(response.message);
-					}
-				});
-			}
-		};
+        $scope.categoriaSave = function() {
+            if($scope.categoria === undefined ){
+                alert("Deve-se preencher todos os campos.");
+            }
+            else {
+                var categoria = $resource('/api/v1/categoria');
+                categoria.save($scope.categoria,
+                    function(response){
+                        console.log(response);
+                        alert("Categoria registrada com sucesso!");
+                        $location.path('/categoria');
+                        highlightSearch(); //Highlights the menu of /resource list
+                    },
+                    function(response){
+                        console.log(response);
+                        alert("OPS. Verifique tods os campos e tente novamente.");
+                        if(response.message != undefined){
+                            alert(response.message);
+                        }
+                    });
+            }
+        };
 
-		$scope.getId = function() {
-			var categoria_id = $routeParams.categoria_id;
-			var categoria = $resource('/api/v1/categoria/:id', { id : '@id'});
-			categoria.get({id: categoria_id}, function(categoria, getResponseHeaders){
-				$scope.categoria = categoria;
-			});
-		}
+        $scope.getId = function() {
+            var categoria_id = $routeParams.categoria_id;
+            var categoria = $resource('/api/v1/categoria/:id', { id : '@id'});
+            categoria.get({id: categoria_id}, function(categoria, getResponseHeaders){
+                $scope.categoria = categoria;
+            });
+        };
 
-		$scope.categoriaUpdate = function() {
-			if($scope.categoria === undefined ){
-				alert("Deve-se preencher todos os campos.");
-			}
-			else {
-				var categoria = $resource('/api/v1/categoria/:id', { id : '@id'}, { update: { method:'PUT' }});
-				categoria.update($scope.categoria,
-				function(response){
-					alert("Categoria editada com sucesso!");
-					$location.path('/categoria');
-					highlightSearch(); //Highlights the menu of /resource list
-				},
-				function(response) {
-					alert("OPS. Verifique tods os campos e tente novamente.");
-					if(response.message != undefined){
-						alert(response.message);
-					}
-				});
-			}
-		};
+        $scope.categoriaUpdate = function() {
+            if($scope.categoria === undefined ){
+                alert("Deve-se preencher todos os campos.");
+            }
+            else {
+                var categoria = $resource('/api/v1/categoria/:id', { id : '@id'}, { update: { method:'PUT' }});
+                categoria.update($scope.categoria,
+                    function(response){
+                        alert("Categoria editada com sucesso!");
+                        $location.path('/categoria');
+                        highlightSearch(); //Highlights the menu of /resource list
+                    },
+                    function(response) {
+                        alert("OPS. Verifique tods os campos e tente novamente.");
+                        if(response.message != undefined){
+                            alert(response.message);
+                        }
+                    });
+            }
+        };
 
-		$scope.categoriaDelete = function(_id) {
-			var __id =parseInt(_id);
-			if(__id){
-				if(confirm("Remover #"+__id+"?")){
-					var categoria = $resource('/api/v1/categoria/:id', { id : '@id'});
-					categoria.delete({id:__id},
-					function(response){
-						alert("A categoria de id "+__id+" foi removida");
-						//$location.path('/');
-						//$location.path('/categorias');
-						var g = $scope.categorias;
-						for (var i = g.length - 1; i >= 0; i--) {
-							if(g[i].id == __id){
-								g.splice(i, 1);
-								break;
-							}
-						};
-						highlightSearch(); //Highlights the menu of /resource list
-					},
-					function(response) {
-						alert("OPS. Não foi possível remover. Tente novamente..");
-						if(response.message != undefined){
-							alert(response.message);
-						}
-					});
-				}
-				
-			}
-		};
-	}
+        $scope.categoriaDelete = function(_id) {
+            var __id =parseInt(_id);
+            if(__id){
+                if(confirm("Remover #"+__id+"?")){
+                    var categoria = $resource('/api/v1/categoria/:id', { id : '@id'});
+                    categoria.delete({id:__id},
+                        function(response){
+                            alert("A categoria com o id "+__id+" foi removida com sucesso.");
+
+                            var g = $scope.categorias;
+                            for (var i = g.length - 1; i >= 0; i--) {
+                                if(g[i].id == __id){
+                                    g.splice(i, 1);
+                                    break;
+                                }
+                            };
+                        },
+                        function(response) {
+                            alert("OPS. Não foi possível remover. Tente novamente..");
+                            if(response.message != undefined){
+                                alert(response.message);
+                            }
+                        });
+                }
+
+            }
+        };
+
+    }
 ]);
+
+
+
+// va.controller('categoriasCtrl', ['$scope', '$http', '$location', '$routeParams', '$resource',
+// 	function($scope, $http, $location, $routeParams, $resource){
+//
+// 		$scope.getCategorias = function() {
+// 			$http.get('/api/v1/categoria').success(function(response){
+// 				$scope.categorias = response;
+// 			});
+// 		};
+//
+//         $scope.categoriaSave = function() {
+//             if($scope.categoria === undefined ){
+//                 alert("Deve-se preencher todos os campos.");
+//             }
+//             else {
+//                 var categoria = $resource('/api/v1/categoria');
+//                 categoria.save($scope.categoria,
+//                     function(response){
+//                         alert("categoria registrada com sucesso!");
+//                         $location.path('/categoria');
+//                         highlightSearch(); //Highlights the menu of /resource list
+//                     },
+//                     function(response){
+//                         alert("OPS. Verifique tods os campos e tente novamente.");
+//                         if(response.message != undefined){
+//                             alert(response.message);
+//                         }
+//                     });
+//             }
+//         };
+//
+// 		$scope.getId = function() {
+// 			var categoria_id = $routeParams.categoria_id;
+// 			var categoria = $resource('/api/v1/categoria/:id', { id : '@id'});
+// 			categoria.get({id: categoria_id}, function(categoria, getResponseHeaders){
+// 				$scope.categoria = categoria;
+// 			});
+// 		};
+//
+// 		$scope.categoriaUpdate = function() {
+// 			if($scope.categoria === undefined ){
+// 				alert("Deve-se preencher todos os campos.");
+// 			}
+// 			else {
+// 				var categoria = $resource('/api/v1/categoria/:id', { id : '@id'}, { update: { method:'PUT' }});
+// 				categoria.update($scope.categoria,
+// 				function(response){
+// 					alert("Categoria editada com sucesso!");
+// 					$location.path('/categoria');
+// 					highlightSearch(); //Highlights the menu of /resource list
+// 				},
+// 				function(response) {
+// 					alert("OPS. Verifique tods os campos e tente novamente.");
+// 					if(response.message != undefined){
+// 						alert(response.message);
+// 					}
+// 				});
+// 			}
+// 		};
+//
+// 		$scope.categoriaDelete = function(_id) {
+// 			var __id =parseInt(_id);
+// 			if(__id){
+// 				if(confirm("Remover #"+__id+"?")){
+// 					var categoria = $resource('/api/v1/categoria/:id', { id : '@id'});
+// 					categoria.delete({id:__id},
+// 					function(response){
+// 						alert("A categoria de id "+__id+" foi removida");
+// 						//$location.path('/');
+// 						//$location.path('/categorias');
+// 						var g = $scope.categoria;
+// 						for (var i = g.length - 1; i >= 0; i--) {
+// 							if(g[i].id == __id){
+// 								g.splice(i, 1);
+// 								break;
+// 							}
+// 						};
+// 						highlightSearch(); //Highlights the menu of /resource list
+// 					},
+// 					function(response) {
+// 						alert("OPS. Não foi possível remover. Tente novamente..");
+// 						if(response.message != undefined){
+// 							alert(response.message);
+// 						}
+// 					});
+// 				}
+//
+// 			}
+// 		};
+// 	}
+// ]);
+
 va.controller('livrosCtrl', ['$scope', '$http', '$location', '$routeParams', '$resource', '$log',
 	function($scope, $http, $location, $routeParams, $resource, $log){
 
@@ -245,7 +342,7 @@ va.controller('livrosCtrl', ['$scope', '$http', '$location', '$routeParams', '$r
 			livro.get({id: livro_id}, function(livro, getResponseHeaders){
 				$scope.livro = livro;
 			});
-		}
+		};
 
 		$scope.livroUpdate = function() {
 			if($scope.livro === undefined ){
@@ -292,7 +389,7 @@ va.controller('livrosCtrl', ['$scope', '$http', '$location', '$routeParams', '$r
 						}
 					});
 				}
-				
+
 			}
 		};
 
@@ -302,10 +399,37 @@ va.controller('livrosCtrl', ['$scope', '$http', '$location', '$routeParams', '$r
 va.controller('emprestadoCtrl', ['$scope', '$http', '$location', '$routeParams',
 	function($scope, $http, $location, $routeParams){
 
-		$scope.getClients = function(){
+		$scope.getEmprestados = function(){
 			$http.get('/api/v1/emprestado').success(function(response){
-				$scope.emprestado = response;
+				$scope.emprestados = response;
 			});
-		}
+		};
+
+        $scope.getOptions = function() {
+            $http.get('/api/v1/livro').success(function(response){
+                $scope.livros = response;
+            });
+        };
+
+        $scope.emprestadosSave = function() {
+            if($scope.emprestado === undefined ){
+                alert("Deve-se preencher todos os campos.");
+            }
+            else {
+                var emprestado = $resource('/api/v1/emprestado');
+                emprestado.save($scope.emprestado,
+                    function(response){
+                        alert("Livro emprestado registrado com sucesso!");
+                        $location.path('/emprestado');
+                        highlightSearch(); //Highlights the menu of /resource list
+                    },
+                    function(response) {
+                        alert("OPS. Verifique tods os campos e tente novamente.");
+                        if(response.message != undefined){
+                            alert(response.message);
+                        }
+                    });
+            }
+        };
 	}
 ]);

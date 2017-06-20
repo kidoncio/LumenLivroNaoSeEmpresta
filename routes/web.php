@@ -49,8 +49,17 @@ $app->delete('api/v1/categoria/{id}', 'CategoriasController@remove');
 /**
  * Routes for resource emprestado
  */
-$app->get('emprestado', 'EmprestadosController@all');
-$app->get('emprestado/{id}', 'EmprestadosController@get');
-$app->post('emprestado', 'EmprestadosController@add');
-$app->put('emprestado/{id}', 'EmprestadosController@put');
-$app->delete('emprestado/{id}', 'EmprestadosController@remove');
+$app->get('api/v1/emprestado', 'EmprestadosController@all');
+$app->get('api/v1/emprestado/{id}', 'EmprestadosController@get');
+$app->post('api/v1/emprestado', 'EmprestadosController@add');
+$app->put('api/v1/emprestado/{id}', 'EmprestadosController@put');
+$app->delete('api/v1/emprestado/{id}', 'EmprestadosController@remove');
+
+/**
+ * Routes for resource categoria
+ */
+$app->get('categoria', 'CategoriasController@all');
+$app->get('categoria/{id}', 'CategoriasController@get');
+$app->post('categoria', 'CategoriasController@add');
+$app->put('categoria/{id}', 'CategoriasController@put');
+$app->delete('categoria/{id}', 'CategoriasController@remove');

@@ -10,7 +10,9 @@ class CreateCategoriasTable extends Migration
     {
         Schema::create('categorias', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('nome', 100);
+            $table->string('categoria', 30);
+            // Constraints declaration
+
         });
     }
 

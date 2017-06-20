@@ -4,18 +4,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Categoria extends Model {
 
-    protected $fillable = ["nome", "descricao"];
+    protected $fillable = ["categoria"];
 
     protected $dates = [];
 
     public static $rules = [
-        "categoria_id" => "unsigned",
-        "nome" => "unique",
-        "descricao" => "nullable",
+        "categoria" => "required",
     ];
 
     public $timestamps = false;
-
-    // Relationships
 
 }

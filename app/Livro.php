@@ -4,14 +4,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Livro extends Model {
 
-    protected $fillable = ["titulo", "categoria", "categoria_id", "autor_id", "autor_id", "categorium_id"];
+    protected $fillable = ["titulo", "categoria_id", "autor_id", "autor_id"];
 
     protected $dates = [];
 
     public static $rules = [
         "livro_id" => "unsigned",
         "titulo" => "required",
-        "categoria" => "required",
         "autor_id" => "required|numeric",
         "categoria_id" => "required|numeric",
     ];

@@ -1,40 +1,25 @@
-<table class="table">
-	<thead>
-		<tr>
-			<th>Start Date</th>
-			<th>End Date</th>
-			<th>livro Id</th>
-			<th>Client Id</th>
-			<th>Returned</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>14/01/2016</td>
-			<td>16/01/2016</td>
-			<td>1</td>
-			<td>1</td>
-			<td>True</td>
-			<td><button type="button">Edit</button></td>
-			<td><button type="button">Delete</button></td>
-		</tr>
-		<tr>
-			<td>16/01/2016</td>
-			<td>20/01/2016</td>
-			<td>2</td>
-			<td>2</td>
-			<td>False</td>
-			<td><button type="button">Edit</button></td>
-			<td><button type="button">Delete</button></td>
-		</tr>
-		<tr>
-			<td>16/01/2016</td>
-			<td>24/01/2016</td>
-			<td>3</td>
-			<td>3</td>
-			<td>False</td>
-			<td><button type="button">Edit</button></td>
-			<td><button type="button">Delete</button></td>
-		</tr>
-	</tbody>
-</table>
+<div ng-controller="emprestadoCtrl" data-ng-init="getEmprestados()">
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Início do Empréstimo</th>
+            <th>Livro</th>
+            <th>Categoria</th>
+            <th>Emprestado para</th>
+        </tr>
+        </thead>
+
+        <tbody ng-scope>
+        <tr data-ng-repeat="emprestado in emprestados">
+            <td>{{ emprestado.date_start }}</td>
+            <td>{{ emprestado.livro.id }}</td>
+            <td>{{ emprestado.livro.categoria }}</td>
+            <td>{{ emprestado.nome }}</td>
+            <td><a class="btn btn-success" ng-href='{{"/emprestado/"+emprestado.id}}'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
+            <td><button class="btn btn-danger" ng-click="emprestadoDelete(emprestado.id)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>

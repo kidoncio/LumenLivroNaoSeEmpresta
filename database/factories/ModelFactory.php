@@ -128,3 +128,12 @@ $factory->define(App\Livro::class, function ($faker) {
         'categorium_id' => $faker->key,
     ];
 });
+
+/**
+ * Factory definition for model App\Categoria.
+ */
+$factory->define(App\Categoria::class, function ($faker) {
+    return [
+        // Fields here
+    ];
+});

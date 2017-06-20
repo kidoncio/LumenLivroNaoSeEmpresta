@@ -6,9 +6,9 @@
             <legend>Adicionar Categoria</legend>
             <!-- Text input-->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="nome">Nome</label>
+                <label class="col-md-4 control-label" for="categoria">Nome da Categoria</label>
                 <div class="col-md-4">
-                    <input id="nome" name="nome" class="form-control input-md" type="text" ng-model="categoria.nome">
+                    <input id="categoria" name="categoria" class="form-control input-md" type="text" ng-model="categoria.categoria">
                 </div>
             </div>
             <!-- Button (Double) -->
@@ -16,7 +16,7 @@
                 <label class="col-md-4 control-label" for="button1id"></label>
                 <div class="col-md-8">
                     <button id="submit" class="btn btn-success" ng-click="categoriaSave()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
-                    <a id="button2id" class="btn btn-danger" ng-href="/categoria" onclick="highlightSearch()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                    <a class="btn btn-danger" ng-href="/categoria" onclick="highlightSearch()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
                 </div>
             </div>
         </fieldset>
