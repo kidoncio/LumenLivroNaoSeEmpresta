@@ -11,9 +11,6 @@ class CreateEmprestadosTable extends Migration
         Schema::create('emprestados', function(Blueprint $table) {
             $table->increments('id');
             $table->string('nome', 255);
-            $table->date('date_start');
-            $table->date('date_end');
-            $table->boolean('emprestado');
             $table->integer('livro_id')->unsigned();
             $table->foreign('livro_id')
                 ->references('id')

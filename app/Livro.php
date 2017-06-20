@@ -4,13 +4,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Livro extends Model {
 
-    protected $fillable = ["titulo", "categoria_id", "autor_id", "autor_id"];
+    protected $fillable = ["titulo", "disponivel", "categoria_id", "autor_id"];
 
     protected $dates = [];
 
     public static $rules = [
-        "livro_id" => "unsigned",
         "titulo" => "required",
+        "disponivel" => "required",
         "autor_id" => "required|numeric",
         "categoria_id" => "required|numeric",
     ];
@@ -24,8 +24,7 @@ class Livro extends Model {
 
     public function categoria()
     {
-        return $this->belongsTo("App\Categorium");
+        return $this->belongsTo("App\Categoria");
     }
-
 
 }

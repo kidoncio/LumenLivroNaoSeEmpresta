@@ -4,7 +4,9 @@
     <link rel="stylesheet" type="text/css" href="components/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="components/bootstrap/css/bootstrap-theme.css">
     <link rel="stylesheet" type="text/css" href="components/angular-bootstrap/ui-bootstrap.css">
-    <title></title>
+
+    <title>Livro Não Se Empresta</title>
+
     <base href="/">
 </head>
 <style type="text/css">
@@ -125,10 +127,10 @@
     </div>
 </div>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js"></script>
 <script type="text/javascript" src="components/angular/angular.js"></script>
 <script type="text/javascript" src="components/angular-resource/angular-resource.js"></script>
 <script type="text/javascript" src="components/angular-route/angular-route.js"></script>
-<script type="text/javascript" src="components/jquery/jquery.js"></script>
 <script type="text/javascript" src="components/bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="components/angular-bootstrap/ui-bootstrap.js"></script>
 <script type="text/javascript" src="components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -136,6 +138,10 @@
 <script type="text/javascript" src="components/app/controllers/controller.js"></script>
 <script type="text/javascript" src="components/app/routes/route.js"></script>
 <script type="text/javascript" src="components/app/services/service.js"></script>
+<!--FontAwesome-->
+<script src="https://use.fontawesome.com/7417757c26.js"></script>
+
+
 <script type="text/javascript">
     $(document).ready(function(){
         // Swap active status on sidebar menu

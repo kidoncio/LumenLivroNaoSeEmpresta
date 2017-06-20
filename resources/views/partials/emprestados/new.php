@@ -22,23 +22,10 @@
             </div>
 
             <div class="form-group">
-                <label class="col-md-4 control-label" for="date_start">Data Inicial</label>
-                <div class="col-md-4">
-                    <input id="datepicker" name="date_start" class="form-control input-md" type="text" ng-model="emprestado.date_start">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="date_end">Data de Devolução</label>
-                <div class="col-md-4">
-                    <input id="datepicker" name="date_end" class="form-control input-md" type="text" ng-model="emprestado.date_end">
-                </div>
-            </div>
-
-            <div class="form-group">
+                <label class="col-md-4 control-label" for="button1id"></label>
                 <div class="col-md-8">
-                    <button id="submit" class="btn btn-success" ng-click="emprestadoSave();">Save</button>
-                    <a class="btn btn-danger" onclick="highlightSearch()" ng-href="/emprestado">Cancel</a>
+                    <button id="submit" class="btn btn-success" ng-click="emprestadosSave();"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+                    <a class="btn btn-danger" onclick="highlightSearch()" ng-href="/emprestado"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
                 </div>
             </div>
         </fieldset>

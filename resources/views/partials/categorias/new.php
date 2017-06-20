@@ -2,16 +2,16 @@
 
     <form class="form-horizontal">
         <fieldset>
-            <!-- Form Name -->
+
             <legend>Adicionar Categoria</legend>
-            <!-- Text input-->
+
             <div class="form-group">
                 <label class="col-md-4 control-label" for="categoria">Nome da Categoria</label>
                 <div class="col-md-4">
                     <input id="categoria" name="categoria" class="form-control input-md" type="text" ng-model="categoria.categoria">
                 </div>
             </div>
-            <!-- Button (Double) -->
+
             <div class="form-group">
                 <label class="col-md-4 control-label" for="button1id"></label>
                 <div class="col-md-8">
