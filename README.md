@@ -1,21 +1,13 @@
-# Lumen PHP Framework
+# Livro Não Se Empresta
+![LivroNaoSeEmpresta](https://images.discordapp.net/attachments/324682876870328321/327138617271255040/LivroNaoSeEmpresta.png?width=1443&height=484)
+##### Desenvolvido com:
+* Lumen v5.4
+* Angular v1.3.20
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/lumen-framework/v/unstable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+### Passo a passo para a instalação do Projeto:
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
-
-## Official Documentation
-
-Documentation for the framework can be found on the [Lumen website](http://lumen.laravel.com/docs).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Lumen framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+1. Clonar o repositório atual
+1. Criar um arquivo de nome `.env`, configurando o mesmo de acordo com o `.env.example`
+1. Executar `composer install`
+1. Executar `npm install`
+1. Após ter configurado o `.env` e executado os comandos acima, para rodar a aplicação bastará executar `php -S localhost:9000 -t public`. Altere para a porta de sua preferência.
