@@ -15,6 +15,4 @@ class Autor extends Model {
 
     public $timestamps = false;
 
-    // Relationships
-
 }
