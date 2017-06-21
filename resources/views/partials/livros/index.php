@@ -4,7 +4,7 @@
         <div class="form-group">
             <div class="input-group">
                 <div class="input-group-addon"><i class="fa fa-search"></i></div>
-                <input type="text" class="form-control" placeholder="Pesquisar Título" ng-model="searchTitulo">
+                <input type="text" class="form-control" placeholder="Pesquisar Livro" ng-model="searchTitulo">
             </div>
         </div>
     </form>
@@ -35,9 +35,16 @@
             </th>
             <th>
                 <a href="#" ng-click="sortType = 'livro.disponivel'; sortReverse = !sortReverse">
-                    Disponível
+                    Disponível para Empréstimo
                     <span ng-show="sortType == 'livro.disponivel' && !sortReverse" class="fa fa-caret-down"></span>
                     <span ng-show="sortType == 'livro.disponivel' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th>
+            <th>
+                <a href="#" ng-click="sortType = 'livro.emprestado.nome'; sortReverse = !sortReverse">
+                    Emprestado Para
+                    <span ng-show="sortType == 'livro.emprestado.nome' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'livro.emprestado.nome' && sortReverse" class="fa fa-caret-up"></span>
                 </a>
             </th>
             <th>Ações</th>
@@ -51,6 +58,8 @@
             <td>{{ livro.categoria.categoria }}</td>
             <td ng-if="livro.disponivel == '1'">Sim</td>
             <td ng-if="livro.disponivel == '0'">Não</td>
+            <td ng-if="livro.emprestado.nome != null"><a href='{{ "/emprestado/"+livro.emprestado.id }}'>{{ livro.emprestado.nome }}</a></td>
+            <td ng-if="livro.emprestado.nome == null">---</td>
             <td>
                 <a class="btn btn-success" ng-href='{{ "/livro/"+livro.id }}'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
                 <button class="btn btn-danger" ng-click="livroDelete(livro.id)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
