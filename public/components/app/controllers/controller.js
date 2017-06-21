@@ -184,99 +184,6 @@ va.controller('categoriasCtrl', ['$scope', '$http', '$location', '$routeParams',
     }
 ]);
 
-
-
-// va.controller('categoriasCtrl', ['$scope', '$http', '$location', '$routeParams', '$resource',
-// 	function($scope, $http, $location, $routeParams, $resource){
-//
-// 		$scope.getCategorias = function() {
-// 			$http.get('/api/v1/categoria').success(function(response){
-// 				$scope.categorias = response;
-// 			});
-// 		};
-//
-//         $scope.categoriaSave = function() {
-//             if($scope.categoria === undefined ){
-//                 alert("Deve-se preencher todos os campos.");
-//             }
-//             else {
-//                 var categoria = $resource('/api/v1/categoria');
-//                 categoria.save($scope.categoria,
-//                     function(response){
-//                         alert("categoria registrada com sucesso!");
-//                         $location.path('/categoria');
-//                         highlightSearch(); //Highlights the menu of /resource list
-//                     },
-//                     function(response){
-//                         alert("OPS. Verifique tods os campos e tente novamente.");
-//                         if(response.message != undefined){
-//                             alert(response.message);
-//                         }
-//                     });
-//             }
-//         };
-//
-// 		$scope.getId = function() {
-// 			var categoria_id = $routeParams.categoria_id;
-// 			var categoria = $resource('/api/v1/categoria/:id', { id : '@id'});
-// 			categoria.get({id: categoria_id}, function(categoria, getResponseHeaders){
-// 				$scope.categoria = categoria;
-// 			});
-// 		};
-//
-// 		$scope.categoriaUpdate = function() {
-// 			if($scope.categoria === undefined ){
-// 				alert("Deve-se preencher todos os campos.");
-// 			}
-// 			else {
-// 				var categoria = $resource('/api/v1/categoria/:id', { id : '@id'}, { update: { method:'PUT' }});
-// 				categoria.update($scope.categoria,
-// 				function(response){
-// 					alert("Categoria editada com sucesso!");
-// 					$location.path('/categoria');
-// 					highlightSearch(); //Highlights the menu of /resource list
-// 				},
-// 				function(response) {
-// 					alert("OPS. Verifique tods os campos e tente novamente.");
-// 					if(response.message != undefined){
-// 						alert(response.message);
-// 					}
-// 				});
-// 			}
-// 		};
-//
-// 		$scope.categoriaDelete = function(_id) {
-// 			var __id =parseInt(_id);
-// 			if(__id){
-// 				if(confirm("Remover #"+__id+"?")){
-// 					var categoria = $resource('/api/v1/categoria/:id', { id : '@id'});
-// 					categoria.delete({id:__id},
-// 					function(response){
-// 						alert("A categoria de id "+__id+" foi removida");
-// 						//$location.path('/');
-// 						//$location.path('/categorias');
-// 						var g = $scope.categoria;
-// 						for (var i = g.length - 1; i >= 0; i--) {
-// 							if(g[i].id == __id){
-// 								g.splice(i, 1);
-// 								break;
-// 							}
-// 						};
-// 						highlightSearch(); //Highlights the menu of /resource list
-// 					},
-// 					function(response) {
-// 						alert("OPS. Não foi possível remover. Tente novamente..");
-// 						if(response.message != undefined){
-// 							alert(response.message);
-// 						}
-// 					});
-// 				}
-//
-// 			}
-// 		};
-// 	}
-// ]);
-
 va.controller('livrosCtrl', ['$scope', '$http', '$location', '$routeParams', '$resource', '$log',
 	function($scope, $http, $location, $routeParams, $resource, $log){
 
@@ -306,6 +213,13 @@ va.controller('livrosCtrl', ['$scope', '$http', '$location', '$routeParams', '$r
 							}
 						};
 					});
+					$http.get('/api/v1/emprestado/'+$scope.livros[i].id).success(function (response) {
+                        for (var i = $scope.livros.length - 1; i >= 0; i-- ) {
+                            if($scope.livros[i].id == response.livro_id) {
+                                $scope.livros[i].emprestado = response;
+                            }
+                        }
+                    });
 				};
 			});
 		};
@@ -403,57 +317,16 @@ va.controller('livrosCtrl', ['$scope', '$http', '$location', '$routeParams', '$r
 	}
 ]);
 
-// va.controller('emprestadoCtrl', ['$scope', '$http', '$location', '$routeParams',
-// 	function($scope, $http, $location, $routeParams){
-//
-// 		$scope.getEmprestados = function(){
-// 			$http.get('/api/v1/emprestado').success(function(response){
-// 				$scope.emprestados = response;
-// 			});
-// 		};
-//
-//         $scope.getOptions = function() {
-//             $http.get('/api/v1/livro').success(function(response){
-//                 $scope.livros = response;
-//             });
-//         };
-//
-//         $scope.emprestadosSave = function() {
-//             if($scope.emprestado === undefined ){
-//                 alert("Deve-se preencher todos os campos.");
-//             }
-//             else {
-//                 var emprestado = $resource('/api/v1/emprestado');
-//                 emprestado.save($scope.emprestado,
-//                     function(response){
-//                     console.log(response);
-//                         alert("Livro emprestado registrado com sucesso!");
-//                         $location.path('/emprestado');
-//                         highlightSearch(); //Highlights the menu of /resource list
-//                     },
-//                     function(response) {
-//                         console.log(response);
-//                         alert("OPS. Verifique tods os campos e tente novamente.");
-//                         if(response.message != undefined){
-//                             alert(response.message);
-//                         }
-//                     });
-//             }
-//         };
-// 	}
-// ]);
-
 va.controller('emprestadoCtrl', ['$scope', '$http', '$location', '$routeParams', '$resource', '$log',
     function($scope, $http, $location, $routeParams, $resource, $log){
 
         $scope.emprestado = {};
-        $scope.autors = [];
-        $scope.categorias = [];
         $scope.livros = [];
 
         $scope.getEmprestados = function() {
             $http.get('/api/v1/emprestado').success(function(response){
                 $scope.emprestados = response;
+                $scope.searchTitulo = '';
                 for (var i = $scope.emprestados.length - 1; i >= 0; i--) {
                     $http.get('/api/v1/livro/'+$scope.emprestados[i].livro_id).success(function(response){
                         for (var i = $scope.emprestados.length - 1; i >= 0; i--) {
@@ -467,14 +340,17 @@ va.controller('emprestadoCtrl', ['$scope', '$http', '$location', '$routeParams',
         };
 
         $scope.getOptions = function() {
-            $http.get('/api/v1/autor').success(function(response){
-                $scope.autors = response;
-            });
-            $http.get('/api/v1/categoria').success(function(response){
-                $scope.categorias = response;
-            });
             $http.get('/api/v1/livro').success(function(response){
                 $scope.livros = response;
+                for (var i = $scope.livros.length - 1; i >= 0; i--) {
+                    $http.get('/api/v1/emprestado/'+$scope.livros[i].id).success(function (response) {
+                        for (var i = $scope.livros.length - 1; i >= 0; i-- ) {
+                            if($scope.livros[i].id == response.livro_id) {
+                                $scope.livros[i].emprestado = response;
+                            }
+                        }
+                    });
+                };
             });
         };
 
@@ -499,10 +375,11 @@ va.controller('emprestadoCtrl', ['$scope', '$http', '$location', '$routeParams',
             }
         };
 
-        $scope.getId_ = function() {
+        $scope.getId = function() {
             var emprestado_id = $routeParams.emprestado_id;
             var emprestado = $resource('/api/v1/emprestado/:id', { id : '@id'});
-            emprestado.get({id: emprestado_id}, function(emprestado, getResponseHeaders){
+            emprestado.query({id: emprestado_id}, function(emprestado, getResponseHeaders){
+                console.log(emprestado);
                 $scope.emprestado = emprestado;
             });
         };
