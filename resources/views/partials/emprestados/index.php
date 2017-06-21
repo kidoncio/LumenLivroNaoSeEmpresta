@@ -1,5 +1,11 @@
 <div ng-controller="emprestadoCtrl" data-ng-init="getEmprestados()">
 
+    <div ng-show="!emprestados.length">
+        <h3>Você não possui nenhum empréstimo registrado.</h3>
+        <br>
+        <br>
+    </div>
+
     <form>
         <div class="form-group">
             <div class="input-group">

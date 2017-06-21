@@ -1,5 +1,11 @@
 <div ng-controller="livrosCtrl" data-ng-init="getlivros()">
 
+    <div ng-show="!livros.length">
+        <h3>Você não possui nenhum livro cadastrado. Cadastre o seu autor, a categoria e o livro desejado.</h3>
+        <br>
+        <br>
+    </div>
+
     <form>
         <div class="form-group">
             <div class="input-group">
@@ -52,6 +58,7 @@
         </thead>
 
         <tbody ng-scope>
+
         <tr data-ng-repeat="livro in livros | orderBy:sortType:sortReverse | filter:searchTitulo">
             <td>{{ livro.titulo }}</td>
             <td>{{ livro.autor.nome }}</td>
