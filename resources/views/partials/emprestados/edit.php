@@ -1,31 +1,22 @@
-<div ng-controller="emprestadosCtrl" ng-scope  data-ng-init="getId_()">
+<div ng-controller="emprestadoCtrl" ng-scope data-ng-init="getId()">
 
-    <form class="form-horizontal" data-ng-init="getOptions()">
-        <fieldset>
+    <form class="form-horizontal">
+        <fieldset data-ng-init="getOptions()">
 
             <legend>Editar Empréstimo</legend>
 
             <div class="form-group">
-                <label class="col-md-4 control-label" for="titulo">Título</label>
+                <label class="col-md-4 control-label" for="nome">Emprestar Livro Para</label>
                 <div class="col-md-4">
-                    <input id="titulo" name="titulo" class="form-control input-md" type="text" ng-model="livro.titulo">
+                    <input id="nome" name="nome" class="form-control input-md" type="text" ng-model="emprestado.nome">
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-md-4 control-label" for="categoria_id">Categoria</label>
+                <label class="col-md-4 control-label" for="livro_id">Livro</label>
                 <div class="col-md-4">
-                    <select id="categoria_id" name="categoria_id" class="form-control" ng-model="livro.categoria_id">
-                        <option ng-repeat="categoria in categorias" value="{{ categoria.id }}">{{ categoria.categoria }}</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="autor_id">Autor</label>
-                <div class="col-md-4">
-                    <select id="autor_id" name="autor_id" class="form-control" ng-model="livro.autor_id">
-                        <option ng-repeat="autor in autors" value="{{ autor.id }}">{{ autor.nome }}</option>
+                    <select id="livro_id" name="livro_id" class="form-control" ng-model="emprestado.livro_id">
+                        <option ng-repeat="livro in livros" ng-if="livro.disponivel == '1'" value="{{ livro.id }}">{{ livro.titulo }}</option>
                     </select>
                 </div>
             </div>
@@ -33,10 +24,11 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="button1id"></label>
                 <div class="col-md-8">
-                    <button id="submit" class="btn btn-success" ng-click="livroUpdate();"><span class="glyphicon glyphicon-saved" aria-hidden="true"></span></button>
-                    <a class="btn btn-danger" onclick="highlightSearch()" ng-href="/livro"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                    <button id="submit" class="btn btn-success" ng-click="emprestadoUpdate()"><span class="glyphicon glyphicon-saved" aria-hidden="true"></span></button>
+                    <a id="button2id" class="btn btn-danger" ng-href="/emprestado" onclick="highlightSearch()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
                 </div>
             </div>
         </fieldset>
     </form>
+
 </div>
