@@ -91,6 +91,11 @@
                                 <a href="/livro" class="list-group-item">Buscar</a>
                                 <a href="/livro/new" class="list-group-item">Novo</a>
                             </uib-accordion-group>
+                            <!-- Emprestado -->
+                            <uib-accordion-group heading="Empréstimos de Livros">
+                                <a href="/emprestado" class="list-group-item">Buscar</a>
+                                <a href="/emprestado/new" class="list-group-item">Novo</a>
+                            </uib-accordion-group>
                             <!-- Autores -->
                             <uib-accordion-group heading="Autores">
                                 <a href="/autor" class="list-group-item">Buscar</a>
@@ -100,11 +105,6 @@
                             <uib-accordion-group heading="Categorias">
                                 <a href="/categoria" class="list-group-item">Buscar</a>
                                 <a href="/categoria/new" class="list-group-item">Novo</a>
-                            </uib-accordion-group>
-                            <!-- Emprestado -->
-                            <uib-accordion-group heading="Emprestado">
-                                <a href="/emprestado" class="list-group-item">Buscar</a>
-                                <a href="/emprestado/new" class="list-group-item">Novo</a>
                             </uib-accordion-group>
 
                         </uib-accordion>
