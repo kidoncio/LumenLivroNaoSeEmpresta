@@ -11,28 +11,13 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
-    return [
-        'name' => $faker->name,
-        'email' => $faker->email,
-    ];
-});
-
 /**
  * Factory definition for model App\Autor.
  */
 $factory->define(App\Autor::class, function ($faker) {
     return [
-        // Fields here
-    ];
-});
-
-/**
- * Factory definition for model App\Livro.
- */
-$factory->define(App\Livro::class, function ($faker) {
-    return [
-        'livro_id' => $faker->fillable,key,
+        'id' => $faker->unique()->randomDigit,
+        'nome' => $faker->name
     ];
 });
 
@@ -41,44 +26,8 @@ $factory->define(App\Livro::class, function ($faker) {
  */
 $factory->define(App\Categoria::class, function ($faker) {
     return [
-        'categoria_id' => $faker->fillable,key,
-        'nome' => $faker->fillable,
-    ];
-});
-
-/**
- * Factory definition for model App\Autor.
- */
-$factory->define(App\Autor::class, function ($faker) {
-    return [
-        'autor_id' => $faker->fillable,key,
-    ];
-});
-
-/**
- * Factory definition for model App\Autor.
- */
-$factory->define(App\Autor::class, function ($faker) {
-    return [
-        'autor_id' => $faker->fillable,key,
-    ];
-});
-
-/**
- * Factory definition for model App\Autor.
- */
-$factory->define(App\Autor::class, function ($faker) {
-    return [
-        'autor_id' => $faker->fillable,key,
-    ];
-});
-
-/**
- * Factory definition for model App\Autor.
- */
-$factory->define(App\Autor::class, function ($faker) {
-    return [
-        'autor_id' => $faker->fillable,key,
+        'id' => $faker->unique()->randomDigit,
+        'categoria' => $faker->sentence,
     ];
 });
 
@@ -87,53 +36,21 @@ $factory->define(App\Autor::class, function ($faker) {
  */
 $factory->define(App\Livro::class, function ($faker) {
     return [
-        'livro_id' => $faker->fillable,key,
-        'categoria_id' => $faker->fillable,key,
-        'autor_id' => $faker->fillable,key,
-        'autor_id' => $faker->key,
-        'categorium_id' => $faker->key,
-    ];
-});
-
-/**
- * Factory definition for model App\Livro.
- */
-$factory->define(App\Livro::class, function ($faker) {
-    return [
-        'livro_id' => $faker->fillable,key,
-        'categoria_id' => $faker->fillable,key,
-        'autor_id' => $faker->fillable,key,
-        'autor_id' => $faker->key,
-        'categorium_id' => $faker->key,
+        'id' => $faker->unique()->randomDigit,
+        'titulo' => $faker->sentence,
+        'autor_id' => $faker->unique()->randomDigit,
+        'categoria_id' => $faker->unique()->randomDigit,
     ];
 });
 
 /**
  * Factory definition for model App\Emprestado.
  */
+
 $factory->define(App\Emprestado::class, function ($faker) {
-    return [
-        'livro_id' => $faker->key,
-        'user_id' => $faker->key,
-    ];
-});
-
-/**
- * Factory definition for model App\Livro.
- */
-$factory->define(App\Livro::class, function ($faker) {
-    return [
-        'livro_id' => $faker->fillable,key,
-        'autor_id' => $faker->key,
-        'categorium_id' => $faker->key,
-    ];
-});
-
-/**
- * Factory definition for model App\Categoria.
- */
-$factory->define(App\Categoria::class, function ($faker) {
-    return [
-        // Fields here
-    ];
+   return [
+       'id' => $faker->unique()->randomDigit,
+       'nome' => $faker->name,
+       'livro_id' => $faker->unique()->randomDigit,
+   ];
 });
