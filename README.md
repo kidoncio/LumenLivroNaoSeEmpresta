@@ -10,4 +10,5 @@
 1. Criar um arquivo de nome `.env`, configurando o mesmo de acordo com o `.env.example`
 1. Executar `composer install`
 1. Executar `npm install`
+1. Executar `php artisan migrate`
 1. Após ter configurado o `.env` e executado os comandos acima, para rodar a aplicação bastará executar `php -S localhost:9000 -t public`. Altere para a porta de sua preferência.
