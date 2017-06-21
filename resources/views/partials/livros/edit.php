@@ -1,4 +1,4 @@
-<div ng-controller="livrosCtrl" ng-scope  data-ng-init="getId_()">
+<div ng-controller="livrosCtrl" ng-scope data-ng-init="getId_()">
 
     <form class="form-horizontal" data-ng-init="getOptions()">
         <fieldset>
