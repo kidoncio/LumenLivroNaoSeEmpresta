@@ -58,7 +58,7 @@
             <td>{{ livro.categoria.categoria }}</td>
             <td ng-if="livro.disponivel == '1'">Sim</td>
             <td ng-if="livro.disponivel == '0'">Não</td>
-            <td ng-if="livro.emprestado.nome != null"><a href='{{ "/emprestado/"+livro.emprestado.id }}'>{{ livro.emprestado.nome }}</a></td>
+            <td ng-if="livro.emprestado.nome != null">{{ livro.emprestado.nome }}</td>
             <td ng-if="livro.emprestado.nome == null">---</td>
             <td>
                 <a class="btn btn-success" ng-href='{{ "/livro/"+livro.id }}'><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
