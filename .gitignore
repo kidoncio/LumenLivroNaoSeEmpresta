@@ -3,8 +3,5 @@
 Homestead.json
 Homestead.yaml
 .env
-docker-compose.yml
-nginx/
 node_modules/
 package-lock.json
-php/
